@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/ViewFolderName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="TextView"
+        android:textSize="45sp" />
+
+    <Button
+        android:id="@+id/DeleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/deleteButton"
+        android:layout_below="@id/ViewFolderName"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp"
+        />
+
+    <Button
+        android:id="@+id/QuizButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/quiz_button"
+        android:layout_below="@id/ViewFolderName"
+        android:layout_toEndOf="@+id/DeleteButton"
+        android:layout_alignTop="@id/DeleteButton"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/addFlashcard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_flashcard"
+        android:layout_below="@id/ViewFolderName"
+        android:layout_toEndOf="@id/QuizButton"
+        android:layout_alignTop="@id/DeleteButton"
+       />
+
+    <Button
+        android:id="@+id/viewFlashCardButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/view_flashCards_button"
+        android:layout_below="@+id/ViewFolderName"
+        android:layout_toEndOf="@id/addFlashcard"/>
+
+
+</RelativeLayout>

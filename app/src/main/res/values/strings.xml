@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Mastermind</string>
+    <string name="add_folder">Add Folder</string>
+    <string name="add_flashcard">Add Flash Card</string>
+    <string name="folder_name">Enter Folder Name</string>
+    <string name="save">Save</string>
+    <string name="flash_card_question">Enter Question</string>
+    <string name="flash_card_answer">Enter Answer </string>
+    <string name="view_flashCards_button">View Flashcards</string>
+    <string name="quiz_button">Quiz</string>
+    <string name="add_flashCard">Add Flashcard</string>
+    <string name="deleteButton">Delete</string>
+</resources>
