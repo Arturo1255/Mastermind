@@ -56,8 +56,11 @@ public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ListItemHo
             textViewName.setOnClickListener(this);
         }
 
+        // When the name of the folder is clicked the corresponding view folder dialog is shown
         public void onClick(View view) {
+            // Gets the index of the selected folder
             int position = getAdapterPosition();
+            // Passes the index of the selected folder and creates and shows a new view folder dialog
             mainActivity.viewFolder(position);
 
         }

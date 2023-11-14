@@ -17,15 +17,19 @@ import java.util.ArrayList;
 
 public class addFlashCardDialog extends DialogFragment {
     private DialogAddFlashcardBinding binding;
+
+    // Variable stores the index of the selected folder
     private int position;
 
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        // Creates and shows a new add Flashcard dialog
         binding = DialogAddFlashcardBinding.inflate(LayoutInflater.from(getContext()));
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setView(binding.getRoot());
 
+        // When the save button is clicked the flashcard is saved to the selected folder
         binding.FlashCardSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,13 +40,18 @@ public class addFlashCardDialog extends DialogFragment {
         return builder.create();
     }
 
+    // Method is used to save the flashcard and ad the flashcard to the selected folder
     public void save(){
+        // Gets the question and answer form the text box
         String question = binding.flashCardQuestion.getText().toString();
         String answer = binding.flashCardAnswer.getText().toString();
         MainActivity mainActivity = (MainActivity) getActivity();
-        mainActivity.addFlashCard(position,answer,question);
+        // The flashed is added to the selected folder
+        mainActivity.addFlashCard(position,question,answer);
+        dismiss();
     }
 
+    // Function is used to give the dialog the index of the selected folder
     public void setPosition(int position) {
         this.position = position;
     }

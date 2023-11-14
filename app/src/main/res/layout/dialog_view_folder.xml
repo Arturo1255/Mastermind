@@ -48,7 +48,8 @@
         android:layout_height="wrap_content"
         android:text="@string/view_flashCards_button"
         android:layout_below="@+id/ViewFolderName"
-        android:layout_toEndOf="@id/addFlashcard"/>
+        android:layout_toEndOf="@id/addFlashcard"
+        android:layout_alignTop="@id/DeleteButton"/>
 
 
 </RelativeLayout>
