@@ -7,7 +7,8 @@
     <string name="flash_card_question">Enter Question</string>
     <string name="flash_card_answer">Enter Answer </string>
     <string name="view_flashCards_button">View Flashcards</string>
-    <string name="quiz_button">Quiz</string>
+    <string name="quiz_button">Start Quiz</string>
     <string name="add_flashCard">Add Flashcard</string>
     <string name="deleteButton">Delete</string>
+    <string name="main_menu">Main Menu</string>
 </resources>

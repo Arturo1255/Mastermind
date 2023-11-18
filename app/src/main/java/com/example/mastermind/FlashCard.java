@@ -1,6 +1,8 @@
 package com.example.mastermind;
 
-public class FlashCard {
+import java.io.Serializable;
+
+public class FlashCard implements Serializable {
     private String question;
     private String answer;
 

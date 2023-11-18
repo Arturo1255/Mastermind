@@ -64,15 +64,21 @@ public class ViewFolderDialog extends DialogFragment {
                 }
         );
 
-        binding.viewFlashCardButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // code for view flashcard button goes here
-
+        binding.viewFlashCardButton.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                vewFlashCards(v);
             }
-        });
+                }
+        );
 
         return builder.create();
+    }
+
+    private void vewFlashCards(View v) {
+        MainActivity mainActivity = (MainActivity) getActivity();
+        mainActivity.viewFlashCards(this.folder);
     }
 
     // Method loads the folder information for the view folder dialog
