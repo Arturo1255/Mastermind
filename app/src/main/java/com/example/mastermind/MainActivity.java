@@ -1,18 +1,17 @@
 package com.example.mastermind;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
-
 import com.example.mastermind.databinding.ActivityMainBinding;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -41,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
         binding.content.recyclerView.setAdapter(folderAdapter);
     }
 
+    public void viewFlashCards(Folder folder){
+        Intent intent = new Intent(this, ViewFlashCardsActivity.class);
+        intent.putExtra("Folder", (Serializable) folder);
+        startActivity(intent);
+    }
 
     //Method creates and shows a new add folder dialog
     public void addFolder(View view) {
@@ -55,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
     public void addFolder(Folder folder){
         folders.add(folder);
         folderAdapter.notifyDataSetChanged();
-
     }
 
     // Method is used to add flashcards to the specified folder
@@ -75,4 +78,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void viewFlashCard(int position) {
+    }
 }
