@@ -72,12 +72,17 @@ public class MainActivity extends AppCompatActivity {
     // Takes in the index of the selected folder
     public void viewFolder(int position){
         ViewFolderDialog viewFolderDialog = new ViewFolderDialog();
-        viewFolderDialog.setList(folders);
-        viewFolderDialog.setPosition(position);
+        viewFolderDialog.setFolder(folderAdapter, folders, position);
         viewFolderDialog.show(getSupportFragmentManager(),"");
     }
 
 
     public void viewFlashCard(int position) {
+    }
+
+    public void startQuiz(Folder folder) {
+        Intent intent = new Intent(this, QuizActivity.class);
+        intent.putExtra("Folder", (Serializable) folder);
+        startActivity(intent);
     }
 }
