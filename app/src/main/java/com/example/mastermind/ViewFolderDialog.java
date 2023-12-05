@@ -3,10 +3,14 @@ package com.example.mastermind;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,6 +39,8 @@ public class ViewFolderDialog extends DialogFragment {
         builder.setView(binding.getRoot());
         // Loads the selected folders information for the view folder dialog
         viewFolder();
+        AlertDialog dialog = builder.create();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
 
         binding.QuizButton.setOnClickListener(
@@ -43,7 +49,14 @@ public class ViewFolderDialog extends DialogFragment {
                     @Override
                     public void onClick(View v) {
                         // Code for the quiz button goes here
-                      startQuiz();
+                        if(folder.getFlashCards().size() > 0){
+                            startQuiz();
+                        }
+                        else {
+                            Toast.makeText(getActivity(), "Add cards to begin Quiz!",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
                     }
                 }
         );
@@ -76,7 +89,7 @@ public class ViewFolderDialog extends DialogFragment {
                 }
         );
 
-        return builder.create();
+        return dialog;
     }
 
     private void deleteFolder(Folder folder) {
@@ -122,6 +135,7 @@ public class ViewFolderDialog extends DialogFragment {
         Log.i("info", "viewFolder position" + position);
         this.folder = list.get(position);
         binding.ViewFolderName.setText(folder.getName());
+
     }
 
     // Method creates and shows a new add folder dialog
