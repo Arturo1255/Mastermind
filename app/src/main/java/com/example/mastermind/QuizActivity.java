@@ -1,5 +1,8 @@
 package com.example.mastermind;
 
+import static java.lang.String.*;
+
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 
@@ -25,10 +28,10 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         binding = QuizBinding.inflate((getLayoutInflater()));
         setContentView(binding.getRoot());
         folder = (Folder) getIntent().getSerializableExtra("Folder");
+        assert folder != null;
         cards = folder.getFlashCards();
-        currCard = cards.get(cardIt);
-        binding.card.setText(currCard.getQuestion());
         binding.titleQuiz.setText(folder.getName());
+        updateCards();
 
         binding.card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,8 +53,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                 // Code for the quiz button goes here
                 if(cardIt < folder.getFlashCards().size() - 1){
                     cardIt += 1;
-                    currCard = cards.get(cardIt);
-                    binding.card.setText(currCard.getQuestion());
+                    updateCards();
                 }
             }
         });
@@ -62,8 +64,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                 // Code for the quiz button goes here
                 if(cardIt > 0){
                     cardIt -= 1;
-                    currCard = cards.get(cardIt);
-                    binding.card.setText(currCard.getQuestion());
+                    updateCards();
                 }
             }
         });
@@ -72,5 +73,13 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v){
 
+    }
+
+    private void updateCards(){
+        currCard = cards.get(cardIt);
+        binding.card.setText(currCard.getQuestion());
+        @SuppressLint("DefaultLocale")
+        String cardTracker = format("%d/%d", cardIt + 1, folder.getFlashCards().size());
+        binding.cardTracker.setText(cardTracker);
     }
 }
