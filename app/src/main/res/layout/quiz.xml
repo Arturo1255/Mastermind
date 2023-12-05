@@ -25,8 +25,9 @@
         app:layout_anchor="@+id/constraintLayout"
         app:layout_anchorGravity="center">
 
-        <TextView
+        <Button
             android:id="@+id/card"
+            style="@style/Widget.Material3.Button.ElevatedButton"
             android:layout_width="353dp"
             android:layout_height="224dp"
             android:background="@drawable/blankcard"
@@ -47,7 +48,7 @@
             app:layout_constraintVertical_bias="0.378" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/thumbsUpButton"
             android:layout_width="103dp"
             android:layout_height="113dp"
             android:layout_marginBottom="28dp"
@@ -59,7 +60,7 @@
             app:srcCompat="@drawable/thumbsup" />
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/thumbsDownButton"
             android:layout_width="121dp"
             android:layout_height="124dp"
             android:layout_marginBottom="20dp"
@@ -71,7 +72,7 @@
             app:srcCompat="@drawable/thumbsdown" />
 
         <ImageButton
-            android:id="@+id/imageButton4"
+            android:id="@+id/prevCardButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -82,7 +83,7 @@
             app:srcCompat="@drawable/prev" />
 
         <ImageButton
-            android:id="@+id/imageButton5"
+            android:id="@+id/nextCardButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
