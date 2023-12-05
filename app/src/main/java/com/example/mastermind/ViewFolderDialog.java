@@ -2,6 +2,7 @@ package com.example.mastermind;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,6 +24,7 @@ public class ViewFolderDialog extends DialogFragment {
     private int position;
 
     private Folder folder;
+    private FolderAdapter folderAdapter;
 
     @NonNull
     @Override
@@ -41,7 +43,7 @@ public class ViewFolderDialog extends DialogFragment {
                     @Override
                     public void onClick(View v) {
                         // Code for the quiz button goes here
-
+                      startQuiz();
                     }
                 }
         );
@@ -60,6 +62,7 @@ public class ViewFolderDialog extends DialogFragment {
                 new View.OnClickListener() {
                     public void onClick (View v) {
                         // Code for delete button goes here
+                        deleteFolder(folder);
                         }
                 }
         );
@@ -74,6 +77,39 @@ public class ViewFolderDialog extends DialogFragment {
         );
 
         return builder.create();
+    }
+
+    private void deleteFolder(Folder folder) {
+        AlertDialog.Builder builder = new AlertDialog.Builder((MainActivity) getActivity());
+        builder.setTitle("Delete Folder");
+        builder.setMessage("Are you sure you want to delete this folder?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Delete the contact from the list
+                list.remove(folder);
+                // Notify the adapter about the change
+                folderAdapter.notifyDataSetChanged();
+                // Dismiss the dialog
+                dialog.dismiss();
+                dismiss();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Do nothing or handle cancel
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
+
+
+
+    private void startQuiz() {
+        MainActivity mainActivity = (MainActivity) getActivity();
+        mainActivity.startQuiz(this.folder);
     }
 
     private void vewFlashCards(View v) {
@@ -94,16 +130,14 @@ public class ViewFolderDialog extends DialogFragment {
         assert getFragmentManager() != null;
         addFlashCardDialog.setPosition(this.position);
         addFlashCardDialog.show(getFragmentManager(), "");
-
     }
 
-    public void setList(ArrayList<Folder> list){
+    public void setFolder(FolderAdapter folderAdapter, ArrayList<Folder> list, int position){
         this.list = list;
+        this.position = position;
+        this.folderAdapter = folderAdapter;
     }
 
-    public void setPosition(int position){
-        this.position = position;
-    }
 
 
 }

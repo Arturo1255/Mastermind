@@ -32,7 +32,6 @@ public class FlashCardAdapter extends RecyclerView.Adapter<FlashCardAdapter.List
 
     @Override
     public void onBindViewHolder(@NonNull ListItemHolder holder, int position) {
-
         FlashCard flashCard = list.get (position);
         holder.question.setText(flashCard.getQuestion());
         holder.answer.setText(flashCard.getAnswer());
