@@ -1,9 +1,6 @@
 package com.example.mastermind;
 
 
-import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ListItemHolder> {
     private MainActivity mainActivity;
@@ -37,10 +35,28 @@ public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ListItemHo
 
         Folder folder = list.get (position);
         holder.textViewName.setText(folder.getName());
+        setCardBackground(holder, position);
 
 
     }
+    private void setCardBackground(ListItemHolder holder, int position){
+        Random rand = new Random();
 
+        switch (position % 4){
+            case 0:
+                holder.textViewName.setBackgroundResource(R.drawable.folder_color_1);
+                break;
+            case 1:
+                holder.textViewName.setBackgroundResource(R.drawable.folder_color_2);
+                break;
+            case 2:
+                holder.textViewName.setBackgroundResource(R.drawable.folder_color_3);
+                break;
+            default:
+                holder.textViewName.setBackgroundResource(R.drawable.folder_color_4);
+
+        }
+    }
     @Override
     public int getItemCount() {
         return list.size();
@@ -55,6 +71,7 @@ public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ListItemHo
             textViewName.setClickable(true);
             textViewName.setOnClickListener(this);
         }
+
 
         // When the name of the folder is clicked the corresponding view folder dialog is shown
         public void onClick(View view) {
